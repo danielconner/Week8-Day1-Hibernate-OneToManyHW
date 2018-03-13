@@ -89,15 +89,15 @@ public class DBHelper {
         return employees;
     }
 
-    public static <T> List<T> getById(Object object, int id){
+    public static <T> T getById(String className, int id){
         session = HibernateUtil.getSessionFactory().openSession();
-        List<T> result = null;
+        T result = null;
         try{
             transaction =session.beginTransaction();
-            String hql = "From " + object + " where id = :id";
+            String hql = "From " + className + " where id = :id";
             Query query = session.createQuery(hql);
             query.setInteger("id", id);
-            result = query.list();
+            result = (T)query.uniqueResult();
             transaction.commit();
         } catch (HibernateException e){
             transaction.rollback();

@@ -37,9 +37,9 @@ public class Runner {
 
         List<Book> booksByAuthor2 = DBHelper.getBooks(author2.getId());
 
-        List<Object> resultById = DBHelper.getById("Book", 3);
+        Object resultById = DBHelper.getById("Book", 3);
 
-        List<Object> anotherResultById = DBHelper.getById("Author", 2);
+        Object anotherResultById = DBHelper.getById("Author", 2);
 
     }
 }
